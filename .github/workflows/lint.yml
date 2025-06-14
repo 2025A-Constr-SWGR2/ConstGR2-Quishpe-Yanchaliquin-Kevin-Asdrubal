@@ -1,25 +1,22 @@
-name: Lint Code
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+name: Node CI
+run-name: Lint and Test nodejs app
+on: [push]
 
 jobs:
   lint:
     runs-on: [self-hosted]
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
+      - name: Descargar el repo
+        uses: actions/checkout@v4
+      - name: Usar nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.15.0'
       - name: Instalar dependencias
-        run: npm install
         working-directory: ./calculadora
-
-      - name: Ejecutar lint
-        run: npm run lint
+        run: |
+          npm install
+      - name: Ejecutar Lint
         working-directory: ./calculadora
+        run: |
+          npm run lint
