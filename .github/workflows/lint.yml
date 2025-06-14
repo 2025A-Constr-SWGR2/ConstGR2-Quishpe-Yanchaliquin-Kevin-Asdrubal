@@ -1,0 +1,25 @@
+name: Lint Code
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: [self-hosted]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Instalar dependencias
+        run: npm install
+        working-directory: ./calculadora
+
+      - name: Ejecutar lint
+        run: npm run lint
+        working-directory: ./calculadora
