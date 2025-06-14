@@ -4,10 +4,14 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(process.env.PORT ?? 3000);
+  const port = process.env.PORT ?? 3000;
+  await app.listen(port);
+  return port; // 👈 Retorna explícitamente el puerto
 }
+
 bootstrap()
   .then((port) => {
+    // ✅ `port` ahora es `number` (ej: 3000)
     Logger.log(
       `✅ Servidor corriendo en http://localhost:${port}`,
       'Bootstrap',
