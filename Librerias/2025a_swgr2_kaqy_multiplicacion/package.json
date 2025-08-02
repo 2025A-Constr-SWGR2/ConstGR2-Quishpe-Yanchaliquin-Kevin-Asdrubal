@@ -1,0 +1,12 @@
+{
+  "name": "2025a_swgr2_kaqy_multiplicacion",
+  "version": "1.0.0",
+  "description": "Modulo de operación de multiplicación para calculadora",
+  "license": "ISC",
+  "author": "Kevin Quishpe, Juan Naranjo, Cesar Pantoja",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

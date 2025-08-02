@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: . # Contexto de nuestro docker file
+      dockerfile: Dockerfile # Refers to your custom Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: ENV_HOST_ASDRUBAL
+      DB_USER: ENV_USER_ASDRUBAL
+      DB_PASSWORD: ENV_PASSWORD_ASDRUBAL
+      DB_NAME: ENV_NAME_ASDRUBAL
+  db:
+    image: postgres:latest # Use the latest PostgreSQL image
+    container_name: my_postgres_db
+    environment:
+      POSTGRES_USER: ENV_USER_ASDRUBAL
+      POSTGRES_PASSWORD: ENV_PASSWORD_ASDRUBAL
+      POSTGRES_DB: ENV_NAME_ASDRUBAL
+    ports:
+      - "5432:5432" # Expose PostgreSQL port
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persistent data storage
+volumes:
+  postgres_data:
+ 
